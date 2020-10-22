@@ -2,42 +2,23 @@
 
 การทำโครงงาน เริ่มต้นด้วยการศึกษาค้นคว้า ทฤษฎีที่เกี่ยวข้อง หรือ งานวิจัย/โครงงาน ที่เคยมีผู้นำเสนอไว้แล้ว ซึ่งเนื้อหาในบทนี้ก็จะเกี่ยวกับการอธิบายถึงสิ่งที่เกี่ยวข้องกับโครงงาน เพื่อให้ผู้อ่านเข้าใจเนื้อหาในบทถัดๆ ไปได้ง่ายขึ้น
 
-\section{ระบบฐานข้อมูล}
-\subsection{MySQL}
+\section{Terminolgy}
 
-\enskip MySQL เป็นระบบฐานข้อมูลในรูปแบบ SQL และฐานข้อมูลนี้มีการเก็บรักษาข้อมูลโดยใช้หลักการของ ACID Model \cite{acid}
+\subsection{Framework}
 
-\section{Frontend}
-
-\subsection{Reactjs}
-
-\enskip Reactjs \cite{reactjs} คือ tools ที่ไว้ใช้สำหรับพัฒนา application ฝั่ง frontend ซึ่งสามารถช่วยทำให้ พัฒนาตัวของ application ได้ง่ายขึ้น ซึ่งจะ compile ให้กลายเป็น javascript ก่อนที่จะนำไปใช้ในระดับ production
-
-\subsection{Nextjs}
-
-\enskip Nextjs \cite{nextjs} คือ framework \cite{framework} ที่พัฒนาเพี่อที่รองรับ Reactjs \cite{reactjs} ซึ่ง framework นี้สามารถเพิ่มประสิทธิของ React \cite{reactjs} เหมาะสำหรับ Web application ขนาดใหญ่สามารถทำ cdn \cite{cdn} ได้ง่าย
-
-\section{Backend}
-
-\subsection{Nestjs}
-
-\enskip Nestjs \cite{nestjs} คือ nodejs \cite{nodejs} framework \cite{framework} ไว้สำหรับพัฒนา server application \cite {serverapplication} พื้นฐานของ framework ถูกออกแบบมาให้มีหลักการทำงานคล้ายๆ กับ Angular framework \cite{angular} ที่มีความนิยมในระดับหนึ่ง
-
-\subsection{GraphQL}
-
-\enskip GraphQL \cite{graphql} คือ web-base api \cite{webapi} ที่มีความสามารถลคจำนวน request ที่เกิดขึ้นในระหว่าง server กับ client และสามารถ เพิ่มประสิทธิการเข้าถึงข้อมูล และการทำงานในระดับ server ได้โดยที่ GraphQL จะสามารถบอกได้ว่า client ต้องการอะไรบ้าง และฝั่ง server ก็จะสามารถทำงานตามเฉพาะของฝั่ง client ต้องการเท่านั้น
+Framework \cite{framework} คือ library สำหรับกำหนดโครงสร้างขอโปรแกรมที่เพื่อให้ง่ายต่อการพัฒนาต่อ และสามารถนำโครงสร้างขอโปรแกรมไปใช้ต่อได้ทันที
 
 \section{Operating System}
 
 \subsection{Docker}
 
-\enskip Docker \cite{docker} คือ engine ตัวหนึ่งที่มีการทำงานเป็น OS Virtualization \cite {osvirtual} เพื่อใช้สำหรับการการรัน server ต่างๆ
+\enskip Docker \cite{docker} คือ engine ตัวหนึ่งที่มีการทำงานเป็น OS Virtualization \cite {osvirtual} เพื่อใช้สำหรับการการรัน server ต่างๆ โดยจะต้องทำให้โปรแกรมนั้นอยู่ในรูปแบบของ image และเมื่อนำไปทำงานจะกลายเป็น container ซึ่งจะทำให้ง่ายต่อการจัดเก็บและนำไปใช้ในระดับ production
 
 \section{Tools}
 
 \subsection{Nodejs}
 
-\enskip Nodejs \cite{nodejs} คือ tools สำหรับ compile javascript เพื่อให้โปรแกรนั้น สามารถทำงานได้โดยไม่ต้่องพึ่ง browser engine ในการทำงาน
+\enskip Nodejs \cite{nodejs} คือ tools สำหรับ compile javascript \cite{javascript} เพื่อให้โปรแกรมนั้นสามารถทำงานได้โดยไม่่ต้องพึ่ง browser engine ในการทำงาน
 
 \subsection{Kubernetes}
 
@@ -47,16 +28,31 @@
 
 \enskip DataLoader \cite{dataloader} คือ ulitity ที่เป็นส่วนหนึ่งของ layer ของการดึงข้อมูลที่ช่วยให้จัดการดึงข้อมูลต่างๆ ได้อย่างมีประสิทธิภาพ
 
-\section{Overfull hbox}
 
-When the \verb.semifinal. option is passed to the \verb.cpecmu. document class,
-any line that is longer than the line width, i.e., an overfull hbox, will be
-highlighted with a black solid rule:
-\begin{center}
-\begin{minipage}{2em}
-juxtaposition
-\end{minipage}
-\end{center}
+\section{ระบบฐานข้อมูล}
+\subsection{MySQL}
+
+\enskip MySQL เป็นระบบฐานข้อมูลในรูปแบบ SQL และฐานข้อมูลนี้มีการเก็บรักษาข้อมูลโดยใช้หลักการของ ACID Model \cite{acid}
+
+\section{Frontend}
+
+\subsection{Reactjs}
+
+\enskip Reactjs \cite{reactjs} คือ tools ที่ไว้ใช้สำหรับพัฒนา application ฝั่ง frontend ซึ่งสามารถช่วยทำให้ พัฒนา application ได้ง่ายขึ้น ซึ่งจะ compile ให้กลายเป็น javascript ก่อนที่จะนำไปใช้ในระดับ production
+
+\subsection{Nextjs}
+
+\enskip Nextjs \cite{nextjs} คือ framework \cite{framework} ที่พัฒนาเพี่อรองรับ Reactjs \cite{reactjs} ซึ่ง framework นี้สามารถเพิ่มประสิทธิภาพของ React \cite{reactjs} เหมาะสำหรับ Web application ขนาดใหญ่สามารถทำ cdn \cite{cdn} ได้ง่าย
+
+\section{Backend}
+
+\subsection{Nestjs}
+
+\enskip Nestjs \cite{nestjs} คือ nodejs \cite{nodejs} framework \cite{framework} ไว้สำหรับพัฒนา server application \cite {serverapplication} พื้นฐานของ framework ถูกออกแบบมาให้มีหลักการทำงานคล้ายๆ กับ Angular framework \cite{angular} ที่มีความนิยมในระดับหนึ่ง
+
+\subsection{GraphQL}
+
+\enskip GraphQL \cite{graphql} คือ web-base api \cite{webapi} ที่มีความสามารถลดจำนวน request ที่เกิดขึ้นในระหว่าง server กับ client และสามารถ เพิ่มประสิทธิการเข้าถึงข้อมูล และการทำงานในระดับ server ได้ โดยที่ GraphQL จะสามารถบอกได้ว่า client ต้องการอะไรบ้าง และฝั่ง server ก็จะสามารถทำงานตามเฉพาะที่ฝั่ง client ต้องการเท่านั้น
 
 \section{\ifcpe%
 ความรู้ตามหลักสูตรซึ่งถูกนำมาใช้หรือบูรณาการในโครงงาน
