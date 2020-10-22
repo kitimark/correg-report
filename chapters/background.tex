@@ -7,98 +7,45 @@
 
 \enskip MySQL เป็นระบบฐานข้อมูลในรูปแบบ SQL และฐานข้อมูลนี้มีการเก็บรักษาข้อมูลโดยใช้หลักการของ ACID Model \cite{acid}
 
-\section{Second section}
-Section 2 text.
+\section{Frontend}
 
-\subsection{Subsection heading goes here}
+\subsection{Reactjs}
 
-Subsection 1 text
+\enskip Reactjs \cite{reactjs} คือ tools ที่ไว้ใช้สำหรับพัฒนา application ฝั่ง frontend ซึ่งสามารถช่วยทำให้ พัฒนาตัวของ application ได้ง่ายขึ้น ซึ่งจะ compile ให้กลายเป็น javascript ก่อนที่จะนำไปใช้ในระดับ production
 
-\subsubsection{Subsubsection 1 heading goes here}
-Subsubsection 1 text
+\subsection{Nextjs}
 
-\subsubsection{Subsubsection 2 heading goes here}
-Subsubsection 2 text
+\enskip Nextjs \cite{nextjs} คือ framework \cite{framework} ที่พัฒนาเพี่อที่รองรับ Reactjs \cite{reactjs} ซึ่ง framework นี้สามารถเพิ่มประสิทธิของ React \cite{reactjs} เหมาะสำหรับ Web application ขนาดใหญ่สามารถทำ cdn \cite{cdn} ได้ง่าย
 
-\section{Third section}
-Section 3 text. The dielectric constant\index{dielectric constant}
-at the air-metal interface determines
-the resonance shift\index{resonance shift} as absorption or capture occurs
-is shown in Equation~\eqref{eq:dielectric}:
+\section{Backend}
 
-\begin{equation}\label{eq:dielectric}
-k_1=\frac{\omega}{c({1/\varepsilon_m + 1/\varepsilon_i})^{1/2}}=k_2=\frac{\omega
-\sin(\theta)\varepsilon_\mathit{air}^{1/2}}{c}
-\end{equation}
+\subsection{Nestjs}
 
-\noindent
-where $\omega$ is the frequency of the plasmon, $c$ is the speed of
-light, $\varepsilon_m$ is the dielectric constant of the metal,
-$\varepsilon_i$ is the dielectric constant of neighboring insulator,
-and $\varepsilon_\mathit{air}$ is the dielectric constant of air.
+\enskip Nestjs \cite{nestjs} คือ nodejs \cite{nodejs} framework \cite{framework} ไว้สำหรับพัฒนา server application \cite {serverapplication} พื้นฐานของ framework ถูกออกแบบมาให้มีหลักการทำงานคล้ายๆ กับ Angular framework \cite{angular} ที่มีความนิยมในระดับหนึ่ง
 
-\section{About using figures in your report}
+\subsection{GraphQL}
 
-% define a command that produces some filler text, the lorem ipsum.
-\newcommand{\loremipsum}{
-  \textit{Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-  minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-  aliquip ex ea commodo consequat. Duis aute irure dolor in
-  reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-  pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-  culpa qui officia deserunt mollit anim id est laborum.}\par}
+\enskip GraphQL \cite{graphql} คือ web-base api \cite{webapi} ที่มีความสามารถลคจำนวน request ที่เกิดขึ้นในระหว่าง server กับ client และสามารถ เพิ่มประสิทธิการเข้าถึงข้อมูล และการทำงานในระดับ server ได้โดยที่ GraphQL จะสามารถบอกได้ว่า client ต้องการอะไรบ้าง และฝั่ง server ก็จะสามารถทำงานตามเฉพาะของฝั่ง client ต้องการเท่านั้น
 
-\begin{figure}
-  \centering
+\section{Operating System}
 
-  \fbox{
-     \parbox{.6\textwidth}{\loremipsum}
-  }
+\subsection{Docker}
 
-  % To include an image in the figure, say myimage.pdf, you could use
-  % the following code. Look up the documentation for the package
-  % graphicx for more information.
-  % \includegraphics[width=\textwidth]{myimage}
+\enskip Docker \cite{docker} คือ engine ตัวหนึ่งที่มีการทำงานเป็น OS Virtualization \cite {osvirtual} เพื่อใช้สำหรับการการรัน server ต่างๆ
 
-  \caption[Sample figure]{This figure is a sample containing \gls{lorem ipsum},
-  showing you how you can include figures and glossary in your report.
-  You can specify a shorter caption that will appear in the List of Figures.}
-  \label{fig:sample-figure}
-\end{figure}
+\section{Tools}
 
-Using \verb.\label. and \verb.\ref. commands allows us to refer to
-figures easily. If we can refer to Figures
-\ref{fig:walrus} and \ref{fig:sample-figure} by name in the {\LaTeX}
-source code, then we will not need to update the code that refers to it
-even if the placement or ordering of the figures changes.
+\subsection{Nodejs}
 
-\loremipsum\loremipsum
+\enskip Nodejs \cite{nodejs} คือ tools สำหรับ compile javascript เพื่อให้โปรแกรนั้น สามารถทำงานได้โดยไม่ต้่องพึ่ง browser engine ในการทำงาน
 
-% This code demonstrates how to get a landscape table or figure. It
-% uses the package lscape to turn everything but the page number into
-% landscape orientation. Everything should be included within an
-% \afterpage{ .... } to avoid causing a page break too early.
-\afterpage{
-  \begin{landscape}
-  \begin{table}
-    \caption{Sample landscape table}
-    \label{tab:sample-table}
+\subsection{Kubernetes}
 
-    \centering
+\enskip Kubernetes \cite{kubernetes} คือ โปรแกรมที่ทำหน้าที่เป็น orchestration \cite  {orchestration} ของ docker ช่วยให้จัดการ ระบบเครือข่ายระหว่าง container ได้ง่ายขึ้น
 
-    \begin{tabular}{c||c|c}
-        Year & A & B \\
-        \hline\hline
-        1989 & 12 & 23 \\
-        1990 & 4 & 9 \\
-        1991 & 3 & 6 \\
-    \end{tabular}
-  \end{table}
-  \end{landscape}
-}
+\subsection{DataLoader}
 
-\loremipsum\loremipsum\loremipsum
+\enskip DataLoader \cite{dataloader} คือ ulitity ที่เป็นส่วนหนึ่งของ layer ของการดึงข้อมูลที่ช่วยให้จัดการดึงข้อมูลต่างๆ ได้อย่างมีประสิทธิภาพ
 
 \section{Overfull hbox}
 
