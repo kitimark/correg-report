@@ -57,19 +57,19 @@
     \begin{tikzpicture}[]
         \node[module] (I1) {Frontend Layer};
         \node[module, below=of I1] (I2) {Backend Layer};
-        \node[fit=(I1) (I2), draw, innner, sep=2mm,label={[xshift=2mm, font=\sffamily]Regist container}] (fit1) {};
+        \node[fit=(I1) (I2), draw, inner sep=2mm,label={[xshift=2mm]Regist container}] (fit1) {};
         \draw[<->] (I1)--(I2);
     \end{tikzpicture}
     \begin{tikzpicture}[]
         \node[module] (I1) {Frontend Layer};
         \node[module, below=of I1] (I2) {Backend Layer};
-        \node[fit=(I1) (I2), draw, innner, sep=2mm,label={[xshift=2mm, font=\sffamily]Regist container}] (fit1) {};
+        \node[fit=(I1) (I2), draw, inner sep=2mm,label={[xshift=2mm]Regist container}] (fit1) {};
         \draw[<->] (I1)--(I2);
     \end{tikzpicture}
     \begin{tikzpicture}[]
         \node[module] (I1) {Frontend Layer};
         \node[module, below=of I1] (I2) {Backend Layer};
-        \node[fit=(I1) (I2), draw, innner, sep=2mm,label={[xshift=2mm, font=\sffamily]Regist container}] (fit1) {};
+        \node[fit=(I1) (I2), draw, inner sep=2mm,label={[xshift=2mm]Regist container}] (fit1) {};
         \draw[<->] (I1)--(I2);
     \end{tikzpicture}
     \end{center}
@@ -84,9 +84,9 @@
     \begin{center}
     \begin{tikzpicture}[ ]
         \node[module] (I1) {Frontend Layer};
-        \node[fit=(I1), draw,inner sep=2mm, label={[xshift=2mm, font=\sffamily]Regist frontend container}] (fit1) {};
+        \node[fit=(I1), draw,inner sep=2mm, label={[xshift=2mm]Regist frontend container}] (fit1) {};
         \node[module, below=of I1] (I2) {Backend Layer};
-        \node[fit=(I2), draw,inner sep=2mm,label={[xshift=2mm, font=\sffamily]Regist backend container}] (fit2) {};
+        \node[fit=(I2), draw,inner sep=2mm,label={[xshift=2mm]Regist backend container}] (fit2) {};
         \draw[<->] (I1)--(I2);
     \end{tikzpicture}
     \end{center}
@@ -101,13 +101,13 @@
     \begin{center}
     \begin{tikzpicture}[ ]
         \node[module] (I1) {Frontend Layer};
-        \node[fit=(I1), draw,inner sep=2mm, label={[xshift=2mm, font=\sffamily]Frontend container}] (fit1) {};
+        \node[fit=(I1), draw,inner sep=2mm, label={[xshift=2mm]Frontend container}] (fit1) {};
         \node[module, below=of I1] (I2) {Backend Layer};
         \node[module, left=of I2] (I3) {Backend Layer};
         \node[module, right=of I2] (I4) {Backend Layer};
-        \node[fit=(I2), draw,inner sep=2mm,label={[xshift=2mm, font=\sffamily]Backend container}] (fit2) {};
-        \node[fit=(I3), draw,inner sep=2mm,label={[xshift=2mm, font=\sffamily]Backend container}] (fit3) {};
-        \node[fit=(I4), draw,inner sep=2mm,label={[xshift=2mm, font=\sffamily]Backend container}] (fit4) {};
+        \node[fit=(I2), draw,inner sep=2mm,label={[xshift=2mm]Backend container}] (fit2) {};
+        \node[fit=(I3), draw,inner sep=2mm,label={[xshift=2mm]Backend container}] (fit3) {};
+        \node[fit=(I4), draw,inner sep=2mm,label={[xshift=2mm]Backend container}] (fit4) {};
         \foreach \i in {2,3,4}
             \draw[->] (I1)--(I\i);
     \end{tikzpicture}
