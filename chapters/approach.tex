@@ -18,10 +18,10 @@
     \begin{center}
     \begin{tikzpicture}[show background rectangle]
         \node[module ] (I1) {Docker VM};
-        \node[module, right=of I1] (I2) {Docker VM};
-        \node[module, right=of I2] (I3) {Docker VM};
-        \node[ right=of I3] (I5) {...};
-        \node[module, right=of I5] (I4) {Docker VM};
+        \node[module, right=of I1, xshift=-8mm] (I2) {Docker VM};
+        \node[module, right=of I2, xshift=-8mm] (I3) {Docker VM};
+        \node[ right=of I3, xshift=-8mm] (I5) {...};
+        \node[module, right=of I5,  xshift=-8mm] (I4) {Docker VM};
     \end{tikzpicture} \\
     Kubernetes Cluster
     \end{center}
