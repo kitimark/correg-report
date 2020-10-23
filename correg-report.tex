@@ -22,6 +22,20 @@
 %% Add bookmarks and hyperlinks in the document.
 \usepackage[colorlinks=true,allcolors=Blue4,citecolor=red,linktoc=all]{hyperref}
 
+%% Add tikz
+\usepackage{tikz}
+\usetikzlibrary{positioning,fit,arrows.meta,backgrounds}
+\tikzset{
+    module/.style={%
+        draw, rounded corners,
+        minimum width=#2,
+        minimum height=20mm,
+        % font=\sffamily
+        },
+    module/.default=4cm,
+    >=LaTeX
+}
+
 %% Set up commenting
 \iffinal
   \usepackage[disabled]{authcomments}
