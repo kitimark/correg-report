@@ -17,18 +17,18 @@
         \node[module, below=of I1] (I2) {Regist service};
         \node[module, left=of I2] (I3) {Regist service};
         \node[module, right=of I2] (I4) {Regist service};
-        \node[below=of I2] (I5) {VM};
-        \node[module, below=of I5] (I6) {center\_db};
+        \node[below=of I2, yshift=-4mm] (I5) {MySQL};
+        \node[module, below=of I5, yshift=8mm] (I6) {center\_db};
         \node[module, below=of I6, yshift=8mm] (I7) {regist\_db};
         \node[fit=(I2), draw,inner sep=2mm,label={[xshift=2mm, font=\sffamily]Docker VM}] (fit2) {};
         \node[fit=(I3), draw,inner sep=2mm,label={[xshift=2mm, font=\sffamily]Docker VM}] (fit3) {};
         \node[fit=(I4), draw,inner sep=2mm,label={[xshift=2mm, font=\sffamily]Docker VM}] (fit4) {};
-        \node[fit=(I6) (I7), draw,inner sep=2mm,label={[xshift=2mm, font=\sffamily]MySQL}] (fit5) {};
-        \node[fit=(I5) (fit5), draw,inner sep=2mm] (fit6) {};
+        \node[fit=(I5) (I6) (I7), draw,inner sep=2mm,] (fit5) {};
+        \node[fit=(I5) (fit5), draw,inner sep=2mm ,label={[xshift=2mm, font=\sffamily]VM}] (fit6) {};
         \draw[->] (I0)--(I1);
         \foreach \i in {2,3,4} {
             \draw[->] (I1)--(I\i);
-            \draw[->] (I\i)--(fit6);
+            \draw[->] (I\i)--(I5);
         }
     \end{tikzpicture}
     \caption{โครงสร้างพื้นฐานที่เราได้สัมภาษณ์จาก ผู้พัฒนาของสำนักทะเบียน}
