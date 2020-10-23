@@ -16,11 +16,15 @@ Kubernetes Cluster คือ กลุ่มของเครื่องเซ
 
 Framework \cite{framework} คือ library สำหรับกำหนดโครงสร้างขอโปรแกรมที่เพื่อให้ง่ายต่อการพัฒนาต่อ และสามารถนำโครงสร้างขอโปรแกรมไปใช้ต่อได้ทันที
 
-\section{Operating System}
+\section{Infrastruture}
 
 \subsection{Docker}
 
 Docker \cite{docker} คือ engine ตัวหนึ่งที่มีการทำงานเป็น OS Virtualization \cite {osvirtual} เพื่อใช้สำหรับการการรัน server ต่างๆ โดยจะต้องทำให้โปรแกรมนั้นอยู่ในรูปแบบของ image และเมื่อนำไปทำงานจะกลายเป็น container ซึ่งจะทำให้ง่ายต่อการจัดเก็บและนำไปใช้ในระดับ production
+
+\subsection{Kubernetes}
+
+Kubernetes \cite{kubernetes} คือ โปรแกรมที่ทำหน้าที่เป็น orchestration \cite  {orchestration} ของ docker ช่วยให้จัดการ ระบบเครือข่ายระหว่าง container ได้ง่ายขึ้น
 
 \section{Tools}
 
@@ -28,16 +32,12 @@ Docker \cite{docker} คือ engine ตัวหนึ่งที่มีก
 
 Nodejs \cite{nodejs} คือ tools สำหรับ compile javascript \cite{javascript} เพื่อให้โปรแกรมนั้นสามารถทำงานได้โดยไม่่ต้องพึ่ง browser engine ในการทำงาน
 
-\subsection{Kubernetes}
-
-Kubernetes \cite{kubernetes} คือ โปรแกรมที่ทำหน้าที่เป็น orchestration \cite  {orchestration} ของ docker ช่วยให้จัดการ ระบบเครือข่ายระหว่าง container ได้ง่ายขึ้น
-
 \subsection{DataLoader}
 
 DataLoader \cite{dataloader} คือ ulitity ที่เป็นส่วนหนึ่งของ layer ของการดึงข้อมูลที่ช่วยให้จัดการดึงข้อมูลต่างๆ ได้อย่างมีประสิทธิภาพ
 
 
-\section{ระบบฐานข้อมูล}
+\section{Database}
 \subsection{MySQL}
 
 MySQL เป็นระบบฐานข้อมูลในรูปแบบ SQL และฐานข้อมูลนี้มีการเก็บรักษาข้อมูลโดยใช้หลักการของ ACID Model \cite{acid}
