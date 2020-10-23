@@ -7,11 +7,38 @@
 
 หลังจากที่เราได้สัมภาษณ์ผู้พัฒนาโปรแกรมของสำนักทะเบียนและประมวลผล มหาวิทยาลัยเชียงใหม่แล้ว ทำไห้เราได้พบปัญหาอีกหลายๆ อย่างที่เกิดขึ้น ดังต่อไปนี้
 
+\begin{figure}
+    \centering
+    \begin{tikzpicture}[ ]
+        \node[module] (I0) {reg.cmu.ac.th};
+        \node[fit=(I0), draw,inner sep=2mm, label={[xshift=2mm, font=\sffamily]VM}] (fit1) {};
+        \node[module, below=of I0] (I1) {regist.reg.cmu.ac.th (nginx)};
+        \node[fit=(I1), draw,inner sep=2mm, label={[xshift=2mm, font=\sffamily]VM}] (fit1) {};
+        \node[module, below=of I1] (I2) {Regist service};
+        \node[module, left=of I2] (I3) {Regist service};
+        \node[module, right=of I2] (I4) {Regist service};
+        \node[below=of I2] (I5) {VM};
+        \node[module, below=of I5] (I6) {center\_db};
+        \node[module, below=of I6, yshift=8mm] (I7) {regist\_db};
+        \node[fit=(I2), draw,inner sep=2mm,label={[xshift=2mm, font=\sffamily]Docker VM}] (fit2) {};
+        \node[fit=(I3), draw,inner sep=2mm,label={[xshift=2mm, font=\sffamily]Docker VM}] (fit3) {};
+        \node[fit=(I4), draw,inner sep=2mm,label={[xshift=2mm, font=\sffamily]Docker VM}] (fit4) {};
+        \node[fit=(I6) (I7), draw,inner sep=2mm,label={[xshift=2mm, font=\sffamily]MySQL}] (fit5) {};
+        \node[fit=(I5) (fit5), draw,inner sep=2mm] (fit6) {};
+        \draw[->] (I0)--(I1);
+        \foreach \i in {2,3,4} {
+            \draw[->] (I1)--(I\i);
+            \draw[->] (I\i)--(fit6);
+        }
+    \end{tikzpicture}
+    \caption{โครงสร้างพื้นฐานที่เราได้สัมภาษณ์จาก ผู้พัฒนาของสำนักทะเบียน}
+    \label{fig:reg_infra}
+\end{figure}
+
 \begin{itemize}
-\item จากรูป ??? การแบ่งตัวของ VM \cite{vm} ที่นำ มาใช้อย่างไม่มีประสิทธิภาพแบบที่ควรจะเป็น
-\CIreply{ยังไม่รู้เลยว่าระบบมีการใช้ vm ตรงไหนอย่างไรบ้าง}
+\item จากรูป \ref{fig:reg_infra} การแบ่งตัวของ VM \cite{vm} ที่นำ มาใช้อย่างไม่มีประสิทธิภาพแบบที่ควรจะเป็น
 เนื่องจากกลุ่ม VM เหล่านั้นไม่มี System center orchestrator \cite{sco} ทำให้การขยายตัวเป็นไปได้ยากหรือไม่ได้เลย เมื่อระบบถูกเรียกใช้งานจนถึงมีทรัพยากรไม่เพียงพอใน VM นั้นๆ ทำให้โปรแกรม นั้นไม่สามารกขยายตัวไป VM ที่มีทรัพยากรรองรับเพื่อแบ่งจำนวนของผู้ต้องการใช้งานได้ ซึ่งส่งผลให้ระบบล่มในเวลาต่อมา และส่งผลกระทบต่อ โปรแกรมอื่นๆ 
-\CI{ที่มีทางเข้าโปรแกรมผ่านโปรแกรมที่ได้ล่มไป}{งง ไม่เห็นภาพ} จึงสามารถสรุปได้ว่า เซิฟเวอร์ของสำนักทะเบียนไช้งานได้่อย่างไม่มีประสิทธิภาพ
+ที่มีทางเข้าโปรแกรมผ่านโปรแกรมที่ได้ล่มไป เช่น VM ที่ดูแลโปรแกรมที่ให้บริการเว็บไซต์ \url{https://reg.cmu.ac.th/} นั้นเกิดข้อผิดพลาดจึงทำให้ VM นั้นปิดตัวไปชั่วขณะจะทำให้ผู้ใช้งานรวมไปถึงนักศึกษาที่ต้องการลงทะเบียน จะไม่สามารถเข้า \url{https://regist.reg.cmu.ac.th/} ได้โดยง่ายถึงแม้ว่าจะมีทางเข้าโดยตรงก็ตาม เนื่องจาก ผู้ใช้งานบางส่วนในปัจจุบันก็ไม่ทราบถึงทางเข้าถึงนี้อยู่พอสมควร จึงสามารถสรุปได้ว่า เซิฟเวอร์ของสำนักทะเบียนไช้งานได้่อย่างไม่มีประสิทธิภาพ
 
 \item รวมถึงมีข้อมูลในฐานข้อมูลที่ซ้ำซ้อน ในหลายๆ ฐานข้อมูล ซึ่งอาจจะส่งผลกระทบในเรื่องของความไม่แน่นอนของข้อมูล (data inconsistency) ได้ในภายหลัง
 \CIreply{ยกตัวอย่าง?}
