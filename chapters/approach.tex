@@ -20,23 +20,103 @@
         \node[module ] (I1) {Docker VM};
         \node[module, right=of I1] (I2) {Docker VM};
         \node[module, right=of I2] (I3) {Docker VM};
-        \node[module, right=of I3] (I4) {Docker VM};
+        \node[ right=of I3] (I5) {...};
+        \node[module, right=of I5] (I4) {Docker VM};
     \end{tikzpicture} \\
     Kubernetes Cluster
     \end{center}
     \caption[Poem]{New Infrastructure with Kubernetes}
-    \label{fig:my_label}
+    \label{fig:new_infra}
 \end{figure}
 
-จากรูป เราได้วางแผนโครงสร้างพื้นฐานใหม่ โดยการนำ VM ทั้งหมดมารวมกันโดยทำให้อยู่ในรูปแบบ Kubernetes cluster ซึ่งสามารถทำให้ VM ต่างๆ สามารถทำงานร่วมกันได้ผ่าน Kubernetes control plane \cite{kubecomp} ดังนั้นเราสามารถ deploy ตัวของโปรแกรมต่างๆ ที่ต้องการให้ทำงานพร้อมทั้งกำหนดการขยายตัวของจำนวน containers ได้จากการวัดการใช้่งานโปรแกรมใน container นั้นๆ เช่น การใช้งานของตัวประมวลผล, การใช้งานของหน่วยความจำชั่วคราว หรือจำนวนการร้องขอ การใช้งานของตัวโปรแกรมนั้น หรืออื่นๆ ที่เราสามารถกำหนดได้เองผ่าน Horizontal Pod Autoscaler \cite{kubehpa} ของ Kubernetes ได้ แล้วทางตัวของ Kubernetes จะทำการคำนวณและทำการ deploy ตัวของ container ให้อัตโนมัติลงไปใน VM ที่ยังคงมีทรัพยากรเหลือใช้อยู่
+จากรูป \ref{fig:new_infra} เราได้วางแผนโครงสร้างพื้นฐานใหม่ โดยการนำ VM ทั้งหมดมารวมกันโดยทำให้อยู่ในรูปแบบ Kubernetes cluster ซึ่งสามารถทำให้ VM ต่างๆ สามารถทำงานร่วมกันได้ผ่าน Kubernetes control plane \cite{kubecomp} ดังนั้นเราสามารถ deploy ตัวของโปรแกรมต่างๆ ที่ต้องการให้ทำงานพร้อมทั้งกำหนดการขยายตัวของจำนวน containers ได้จากการวัดการใช้่งานโปรแกรมใน container นั้นๆ เช่น การใช้งานของตัวประมวลผล, การใช้งานของหน่วยความจำชั่วคราว หรือจำนวนการร้องขอ การใช้งานของตัวโปรแกรมนั้น หรืออื่นๆ ที่เราสามารถกำหนดได้เองผ่าน Horizontal Pod Autoscaler \cite{kubehpa} ของ Kubernetes ได้ แล้วทางตัวของ Kubernetes จะทำการคำนวณและทำการ deploy ตัวของ container ให้อัตโนมัติลงไปใน VM ที่ยังคงมีทรัพยากรเหลือใช้อยู่
 
 \section {Enrollment System}
 
 จากที่มาของโครงงานในบทที่ 1 เราได้กล่าวถึง รูปแบบซอฟแวร์ (Software design pattern \cite{sdp}) ที่ใช้ในโปรแกรมลงทะเบียนนั้นมีข้อจำกัดหลักคือการขยายตัวของ โปรแกรมนั้นทำได้แต่ไม่มีประสิทธิภาพ
 
-ปัญหาหลักคือ มี frontend layer และ server layer อยู่ในอยู่ใน container เดียวกันทำให้การขยายตัวทุกครั้ง จำเป็นจะต้องสร้างทั้ง 2 layer นี้ไปพร้อมๆ กัน ซึ่งบางครั้งระบบต้องการที่จะขยายตัวเนื่องจากหนึ่งใน layer ของระบบ มีความต้องการใช้งานทรัพยากรที่มากขึ้น แต่ระบบไม่สามารถขยาย layer นั้นๆเพียง layer เดียวกันได้เนื่องจากระบบต้องขยายทั้ง container (เมื่อ container นั้นเป็นโปรแกรมที่เป็น stateless \cite{slsf})
+\begin{figure}[h]
+    \centering
+    \begin{center}
+    Regist container \\
+    \begin{tikzpicture}[show background rectangle]
+        \node[module] (I1) {Frontend Layer};
+        \node[module, below=of I1] (I2) {Backend Layer};
+        \draw[<->] (I1)--(I2);
+    \end{tikzpicture}
+    \end{center}
+    \caption[Poem]{Enrollment system แบบที่ใช้งานอยู่}
+    \label{fig:old_regist_system}
+\end{figure}
 
-ดังนั้นเราควรที่แยกทั้ง 2 layers นั้นออกจากกันให้เป็นละ container จะทำให้ Kubernetes สามารถเลือกขยายตัวบาง layer จากเงื่อนไขต่างๆที่กำหนด ดังที่เรากล่าวไว้ข้างต้นในช่วงโครงสร้างพื้นฐานในบทที่ 3 นี้ ได้ทำใหใช้ทรัพยากรของเซิฟเวอร์ได้อย่างมีประสิทธิภาพเพิ่มขึ้น
+จากรูป \ref{fig:old_regist_system} ปัญหาหลักคือ มี frontend layer และ server layer อยู่ในอยู่ใน container เดียวกันทำให้การขยายตัวทุกครั้ง จำเป็นจะต้องสร้างทั้ง 2 layer นี้ไปพร้อมๆ กัน ซึ่งบางครั้งระบบต้องการที่จะขยายตัวเนื่องจากหนึ่งใน layer ของระบบ มีความต้องการใช้งานทรัพยากรที่มากขึ้น แต่ระบบไม่สามารถขยาย layer นั้นๆเพียง layer เดียวกันได้เนื่องจากระบบต้องขยายทั้ง container (เมื่อ container นั้นเป็นโปรแกรมที่เป็น stateless \cite{slsf})
+
+\begin{figure}[h]
+    \centering
+    \begin{center}
+    \begin{tikzpicture}[]
+        \node[module] (I1) {Frontend Layer};
+        \node[module, below=of I1] (I2) {Backend Layer};
+        \node[fit=(I1) (I2), draw, innner, sep=2mm,label={[xshift=2mm, font=\sffamily]Regist container}] (fit1) {};
+        \draw[<->] (I1)--(I2);
+    \end{tikzpicture}
+    \begin{tikzpicture}[]
+        \node[module] (I1) {Frontend Layer};
+        \node[module, below=of I1] (I2) {Backend Layer};
+        \node[fit=(I1) (I2), draw, innner, sep=2mm,label={[xshift=2mm, font=\sffamily]Regist container}] (fit1) {};
+        \draw[<->] (I1)--(I2);
+    \end{tikzpicture}
+    \begin{tikzpicture}[]
+        \node[module] (I1) {Frontend Layer};
+        \node[module, below=of I1] (I2) {Backend Layer};
+        \node[fit=(I1) (I2), draw, innner, sep=2mm,label={[xshift=2mm, font=\sffamily]Regist container}] (fit1) {};
+        \draw[<->] (I1)--(I2);
+    \end{tikzpicture}
+    \end{center}
+    \caption[Poem]{การขยายตัวของ Enrollment system แบบที่ใช้งานอยู่ ต้องการขยายตัวในฝั่ง backend layer แต่จำเป็นต้องขยายตัวของ frontend layer ด้วย}
+    \label{fig:scaling_old_regist_system}
+\end{figure}
+
+จากรูป \ref{fig:scaling_old_regist_system} ตัวอย่างการขยายตัวของระบบที่ใช้งานอยู่ในปัจจุบันเมื่อขยายตัวเมื่อมีการใช้งานของฝั่ง server มากขึ้นเราจะพบว่า frontend จะขยายตัวขึ้นตามจำนวน container ที่เพิ่มขึ้นทั้งๆ ที่ frontend ไม่ต้องการที่จะขยายตัว
+
+\begin{figure}[h]
+    \centering
+    \begin{center}
+    \begin{tikzpicture}[ ]
+        \node[module] (I1) {Frontend Layer};
+        \node[fit=(I1), draw,inner sep=2mm, label={[xshift=2mm, font=\sffamily]Regist frontend container}] (fit1) {};
+        \node[module, below=of I1] (I2) {Backend Layer};
+        \node[fit=(I2), draw,inner sep=2mm,label={[xshift=2mm, font=\sffamily]Regist backend container}] (fit2) {};
+        \draw[<->] (I1)--(I2);
+    \end{tikzpicture}
+    \end{center}
+    \caption[Poem]{Enrollment system ที่ออกแบบใหม่}
+    \label{fig:new_regist_system}
+\end{figure}
+
+ดังนั้นเราควรที่แยกทั้ง 2 layers จากรูป \ref{fig:new_regist_system} นั้นออกจากกันให้เป็นละ container จะทำให้ Kubernetes สามารถเลือกขยายตัวบาง layer จากเงื่อนไขต่างๆที่กำหนด ดังที่เรากล่าวไว้ข้างต้นในช่วงโครงสร้างพื้นฐานในบทที่ 3 นี้ ได้ทำใหใช้ทรัพยากรของเซิฟเวอร์ได้อย่างมีประสิทธิภาพเพิ่มขึ้น
+
+\begin{figure}[h]
+    \centering
+    \begin{center}
+    \begin{tikzpicture}[ ]
+        \node[module] (I1) {Frontend Layer};
+        \node[fit=(I1), draw,inner sep=2mm, label={[xshift=2mm, font=\sffamily]frontend container}] (fit1) {};
+        \node[module, below=of I1] (I2) {Backend Layer};
+        \node[module, left=of I2] (I3) {Backend Layer};
+        \node[module, right=of I2] (I4) {Backend Layer};
+        \node[fit=(I2), draw,inner sep=2mm,label={[xshift=2mm, font=\sffamily]Backend container}] (fit2) {};
+        \node[fit=(I3), draw,inner sep=2mm,label={[xshift=2mm, font=\sffamily]Backend container}] (fit3) {};
+        \node[fit=(I4), draw,inner sep=2mm,label={[xshift=2mm, font=\sffamily]Backend container}] (fit4) {};
+        \foreach \i in {2,3,4}
+            \draw[->] (I1)--(I\i);
+    \end{tikzpicture}
+    \end{center}
+    \caption[Poem]{การขยายตัว Enrollment system ที่ออกแบบใหม่ ขยายตัวในฝั่ง backend layer จะไม่จำเป็นต้องขยายตัวในฝั่ง frontend layer}
+    \label{fig:scaling_new_regist_system}
+\end{figure}
+
+จากรูป \ref{fig:scaling_new_regist_system} ตัวอย่างการขยายตัวเมื่อมีการใช้งานของฝั่ง server มากขึ้นจะทำให้ backend ขยายตัว แต่ frontend ไม่จำเป็นต้องขยายตัว
 
 \section{Enrollment Server}
 
