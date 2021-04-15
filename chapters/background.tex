@@ -3,46 +3,48 @@
 
 เนื้อหาในบทนี้จะอธิบายเกี่ยวกับเทคโนโลยีต่างๆ ที่นำมาประยุกต์ใช้ในโครงงาน Correg
 
-\section{Terminolgy}
+\section{Terminology}
 
-\subsection{VM Instances}
+\subsection{VM instances}
 
-VM Instances \cite{vm} คือ เทคโนโลยีคอมพิวเตอร์เสมือนที่จำลองคอมพิวเตอร์ขึ้นมาให้สามารถใช้ซอฟต์แวร์เพื่อจำลองการทำงานของคอมพิวเตอร์เครื่องอื่นไว้ในเครื่องเดียว หรือหลายเครื่องบนคอมพิวเตอร์เครื่องจริง (Hardware) เพียงเครื่องเดียว
+Virtual machines (VM) \cite{vm}\CIreply{ควรมีหรือไม่ควรมีคำว่า instances?} คือ เทคโนโลยีคอมพิวเตอร์เสมือน ที่จำลองคอมพิวเตอร์ขึ้นมา โดยใช้ซอฟต์แวร์เพื่อจำลองการทำงานของคอมพิวเตอร์เครื่องเดียวหรือหลายเครื่อง ไว้บนคอมพิวเตอร์จริง (physical hardware) เพียงเครื่องเดียว
 
-\subsection{Kubernetes Cluster}
+\subsection{Kubernetes cluster}
 
-Kubernetes Cluster คือ กลุ่มของเครื่องเซิฟเวอร์รวมถึง VM ที่รัน Docker และนำมาทำงานร่วมกันผ่าน Kubernetes control plane \cite{kubecomp} ทำให้เครื่องเซิฟเวอร์ทำงานร่วมกันได้
+Kubernetes cluster คือ กลุ่มของเครื่องเซิฟเวอร์ รวมถึง VM ที่รัน Docker และนำมาทำงานร่วมกันผ่าน Kubernetes control plane \cite{kubecomp} ทำให้เครื่องเซิฟเวอร์ทำงานร่วมกันได้
 
 \subsection{Framework}
 
-Framework \cite{framework} คือ library สำหรับกำหนดโครงสร้างขอโปรแกรมที่เพื่อให้ง่ายต่อการพัฒนาต่อ และสามารถนำโครงสร้างขอโปรแกรมไปใช้ต่อได้ทันที
+Framework \cite{framework} คือ library สำหรับกำหนดโครงสร้างของโปรแกรม เพื่อให้ง่ายต่อการพัฒนาต่อ และสามารถนำโครงสร้างของโปรแกรมไปใช้ต่อได้ทันที
 
 \section{Infrastruture}
 
 \subsection{Docker}
 
-Docker \cite{docker} คือ engine ตัวหนึ่งที่มีการทำงานเป็น OS Virtualization \cite {osvirtual} เพื่อใช้สำหรับการการรัน server ต่างๆ โดยจะต้องทำให้โปรแกรมนั้นอยู่ในรูปแบบของ image และเมื่อนำไปทำงานจะกลายเป็น container ซึ่งจะทำให้ง่ายต่อการจัดเก็บและนำไปใช้ในระดับ production
+Docker \cite{docker} คือ engine ตัวหนึ่งที่มีการทำงานเป็น OS virtualization \cite {osvirtual} เพื่อใช้สำหรับการการรัน server ต่างๆ โดยจะต้องทำให้โปรแกรมนั้นอยู่ในรูปแบบของ image และเมื่อนำไปทำงานจะกลายเป็น container ซึ่งจะทำให้ง่ายต่อการจัดเก็บและนำไปใช้ในระดับ production
 
 \subsection{Kubernetes}
 
-Kubernetes \cite{kubernetes} คือ โปรแกรมที่ทำหน้าที่เป็น orchestration \cite  {orchestration} ของ docker ช่วยให้จัดการ ระบบเครือข่ายระหว่าง container ได้ง่ายขึ้น
+Kubernetes \cite{kubernetes} คือ โปรแกรมที่ทำหน้าที่เป็น orchestration \cite  {orchestration} ของ Docker ช่วยให้จัดการระบบเครือข่ายระหว่าง containers ได้ง่ายขึ้น
+\CIreply{บอกด้วยว่าเทคโนโลยีที่นำมาใช้แต่ละอย่าง จะช่วยแก้ปัญหาตรงจุดไหน}
 
 \section{Tools}
 
 \subsection{Nodejs}
 
-Nodejs \cite{nodejs} คือ tools สำหรับ compile JavaScript \cite{javascript} เพื่อให้โปรแกรมนั้นสามารถทำงานได้โดยไม่่ต้องพึ่ง browser engine ในการทำงาน
+Nodejs \cite{nodejs} คือ tools สำหรับ compile JavaScript \cite{javascript} เพื่อให้โปรแกรมนั้นสามารถทำงานได้โดยไม่ต้องพึ่ง browser engine ในการทำงาน
 
 \section{Database}
 \subsection{MySQL}
 
-MySQL เป็นระบบฐานข้อมูลในรูปแบบ SQL และฐานข้อมูลนี้มีการเก็บรักษาข้อมูลโดยใช้หลักการของ ACID Model \cite{acid}
+MySQL เป็นระบบฐานข้อมูลในรูปแบบ SQL และฐานข้อมูลนี้มีการเก็บรักษาข้อมูลโดยใช้หลักการของ ACID model \cite{acid}\CIreply{คืออะไร อธิบาย}
 
 \section{Backend}
 
 \subsection{Nestjs}
 
-Nestjs \cite{nestjs} คือ nodejs framework ไว้สำหรับพัฒนา server application \cite {serverapplication} พื้นฐานของ framework ถูกออกแบบมาให้มีหลักการทำงานคล้ายๆ กับ Angular framework \cite{angular} ที่มีความนิยมในระดับหนึ่ง
+Nestjs \cite{nestjs} คือ \CI{nodejs}{check capitalization} framework ไว้สำหรับพัฒนา server application \cite {serverapplication} พื้นฐานของ framework ถูกออกแบบมาให้มีหลักการทำงานคล้ายๆ กับ Angular framework \cite{angular} ที่มีความนิยมในระดับหนึ่ง
+\CIreply{ข้อดีของ Nestjs คืออะไร ทำไมถึงเลือกใช้แทนที่จะเลือกอย่างอื่น  ตัวเลือกอื่นมีอะไรบ้าง}
 
 \section{\ifcpe%
 ความรู้ตามหลักสูตรซึ่งถูกนำมาใช้หรือบูรณาการในโครงงาน
@@ -65,7 +67,7 @@ Extracurricular knowledge used, applied, or integrated in this project
 }
 
 \begin{enumerate}
-    \item Docker concept
-    \item Kubernetes concept
-    \item Caching concept
+    \item Docker concepts
+    \item Kubernetes concepts
+    \item Caching concepts\CIreply{ไม่ได้อยู่ใน OS?}
 \end{enumerate}
